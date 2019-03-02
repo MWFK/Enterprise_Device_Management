@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:f="http://xmlns.jcp.org/jsf/core"
+	   xmlns:h="http://xmlns.jcp.org/jsf/html"
+	   xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	   xmlns:jsf="http://xmlns.jcp.org/jsf"
+	   xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	   xmlns:p="http://primefaces.org/ui">
+
+	
+	<h:head>.....WELCOME #{loginBean.employee.firstName} #{loginBean.employee.lastName}...
+	</h:head>
+	<h:body>
+	<h:form  id="form3">
+	
+		<h:commandButton id="btnlogout" action="#{loginBean.doLogout()}" value="logout" />
+	<h:message for="btnlogout"/>
+
+		<br/>
+	<h:dataTable value="#{loginBean.employee.devices}" var="device" border="1">
+	  <h:column>
+	     <f:facet name="header">
+	         <h:outputText value="Device Unique Identifier" />
+	     </f:facet>
+	     <h:outputText value="#{device.uniqueIdentifier}" />
+	  </h:column>
+	  	  <h:column>
+	     <f:facet name="header">
+	         <h:outputText value="Model Name" />
+	     </f:facet>
+	     <h:outputText value="#{device.modelName}" />
+	  </h:column>
+	</h:dataTable>
+
+	<br/>
+	</h:form>
+
+	<ui:include src="/template/footer.xhtml" />
+	</h:body>
+</html>
